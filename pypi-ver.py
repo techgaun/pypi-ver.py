@@ -6,6 +6,7 @@ import requests
 import sys
 from distutils.version import StrictVersion
 
+
 def get_versions(pkg_name):
     url = "https://pypi.python.org/pypi/%s/json" % (pkg_name)
     response = requests.get(url)
