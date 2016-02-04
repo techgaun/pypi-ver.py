@@ -4,7 +4,7 @@
 import json
 import requests
 import sys
-from distutils.version import StrictVersion
+from distutils.version import LooseVersion
 
 
 def get_versions(pkg_name):
@@ -13,7 +13,7 @@ def get_versions(pkg_name):
     if response.status_code == requests.codes.ok:
         data = response.json()
         versions = data["releases"].keys()
-        versions.sort(key=StrictVersion, reverse=True)
+        versions.sort(key=LooseVersion, reverse=True)
     else:
         versions = ["No such package found"]
     return versions
