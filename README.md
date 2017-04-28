@@ -14,8 +14,16 @@ python pypi-ver.py requests
 ```shell
 python pypi-ver.py requests | head -n1 # the latest version
 
-# add above to alias
-alias pylatest="python pypi-ver.py requests | head -n1"
+# create a function for this and make it available for your shell
+
+pylatest() {
+  if [[ "$#" -ne 1 ]]; then
+    echo "Usage: $0 <package>"
+    exit 1
+  fi
+
+  pypi-ver "${1}" | head -n1
+}
 ```
 
 ### System-wide install
